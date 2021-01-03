@@ -13,10 +13,10 @@ sudo DEBIAN_FRONTEND=noninteractive \
 apt install --assume-yes xfce4 desktop-base
 sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'  
 sudo apt install --assume-yes xscreensaver
-echo "deb http://http.kali.org/kali kali-experimental main non-free contrib" | sudo tee -a /etc/apt/sources.list 
-echo "deb http://http.kali.org/kali kali-last-snapshot main non-free contrib" | sudo tee /etc/apt/sources.list
-echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" | sudo tee /etc/apt/sources.list
-echo "deb http://ftp.de.debian.org/debian" | sudo tee /etc/apt/sources.list
+sudo bash -c 'echo "deb http://http.kali.org/kali kali-experimental main non-free contrib" > /etc/apt/sources.list' 
+sudo bash -c 'echo "deb http://http.kali.org/kali kali-last-snapshot main non-free contrib" > /etc/apt/sources.list'
+sudo bash -c 'echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list'
+sudo bash -c 'echo "deb http://ftp.de.debian.org/debian" > sudo tee /etc/apt/sources.list'
 wget https://archive.kali.org/archive-key.asc -O /etc/apt/trusted.gpg.d/kali-archive-key.asc
 sudo apt-get update
 sudo apt --fix-broken install

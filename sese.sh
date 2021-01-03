@@ -1,11 +1,11 @@
-! /bin/bash
+#! /bin/bash
 printf "Installing RDP Be Patience... " >&2
 {
 sudo useradd -m mikel
-sudo adduser mikel sudo
+sudo adduser ALOK sudo
 echo 'mikel:root' | sudo chpasswd
 sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
-sudo apt --fix-broken install
+sudo apt-get update
 wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 sudo dpkg --install chrome-remote-desktop_current_amd64.deb
 sudo apt install --assume-yes --fix-broken

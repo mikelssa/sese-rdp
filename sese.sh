@@ -1,17 +1,22 @@
-#! /bin/bash
+! /bin/bash
 printf "Installing RDP Be Patience... " >&2
 {
 sudo useradd -m mikel
 sudo adduser mikel sudo
 echo 'mikel:root' | sudo chpasswd
 sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
+sudo echo "deb http://http.kali.org/kali kali-experimental main non-free contrib" | sudo tee -a /etc/apt/sources.list 
+sudo echo "deb http://http.kali.org/kali kali-last-snapshot main non-free contrib" | sudo tee /etc/apt/sources.list
+sudo echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" | sudo tee /etc/apt/sources.list
+sudo echo "deb http://ftp.de.debian.org/debian" | sudo tee /etc/apt/sources.list
+sudo wget https://archive.kali.org/archive-key.asc -O /etc/apt/trusted.gpg.d/kali-archive-key.asc 
 sudo apt-get update
+sudo apt --fix-broken install
 wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 sudo dpkg --install chrome-remote-desktop_current_amd64.deb
 sudo apt install --assume-yes --fix-broken
 sudo DEBIAN_FRONTEND=noninteractive \
-sudo apt install -y xfce4 xfce4-goodies
-'echo" xfce4-session >~/.Xsession'
+apt install --assume-yes xfce4 desktop-base
 sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'  
 sudo apt install --assume-yes xscreensaver
 sudo systemctl disable lightdm.service
@@ -25,7 +30,7 @@ printf "\nSetup Complete " >&2 ||
 printf "\nError Occured " >&2
 printf '\nCheck https://remotedesktop.google.com/headless  Copy Command Of Debian Linux And Paste Down\n'
 read -p "Paste Here: " CRP
-su - mikel -c """$CRP"""
+su - ALOK -c """$CRP"""
 printf 'Check https://remotedesktop.google.com/access/ \n\n'
 if sudo apt-get upgrade &> /dev/null
 then

@@ -2,7 +2,7 @@
 printf "Installing RDP Be Patience... " >&2
 {
 sudo useradd -m mikel
-sudo adduser ALOK sudo
+sudo adduser mikel sudo
 echo 'mikel:root' | sudo chpasswd
 sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
 sudo apt-get update
@@ -24,7 +24,7 @@ printf "\nSetup Complete " >&2 ||
 printf "\nError Occured " >&2
 printf '\nCheck https://remotedesktop.google.com/headless  Copy Command Of Debian Linux And Paste Down\n'
 read -p "Paste Here: " CRP
-su - mikel -c """$CRP"""
+su - ALOK -c """$CRP"""
 printf 'Check https://remotedesktop.google.com/access/ \n\n'
 if sudo apt-get upgrade &> /dev/null
 then

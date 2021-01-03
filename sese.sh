@@ -1,6 +1,13 @@
 ! /bin/bash
 printf "Installing RDP Be Patience... " >&2
 {
+echo "deb http://http.kali.org/kali kali-experimental main non-free contrib" | sudo tee -a /etc/apt/sources.list 
+echo "deb http://http.kali.org/kali kali-last-snapshot main non-free contrib" | sudo tee /etc/apt/sources.list
+echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" | sudo tee /etc/apt/sources.list
+echo "deb http://ftp.de.debian.org/debian"
+sudo wget https://archive.kali.org/archive-key.asc -O /etc/apt/trusted.gpg.d/kali-archive-key.asc
+sudo apt-get update&&sudo apt-get upgrade
+sudo apt --fix-broken install
 sudo useradd -m mikel
 sudo adduser mikel sudo
 echo 'mikel:root' | sudo chpasswd

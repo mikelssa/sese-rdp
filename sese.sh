@@ -10,8 +10,8 @@ wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 sudo dpkg --install chrome-remote-desktop_current_amd64.deb
 sudo apt install --assume-yes --fix-broken
 sudo DEBIAN_FRONTEND=noninteractive \
-apt install --assume-yes  desktop-base cinnamon
-sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/cinnamon-session" > /etc/chrome-remote-desktop-session'  
+apt install --assume-yes  desktop-base xfce4 xfce4-places-plugin xfce4-goodies
+sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'  
 sudo apt install --assume-yes xscreensaver
 sudo systemctl disable lightdm.service
 sudo apt install firefox-esr -y
